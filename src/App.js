@@ -46,16 +46,28 @@ class App extends React.Component {
   }
 
   clearTodos = (e) => {
+    e.preventDefault()
     console.log('cleared')
     this.setState({
-      todoList: [
-        null
-      ]
+      todoList: this.state.todoList.filter( todo => {
+        return !todo.completed
+      })
     })
   }
 
-  toggleComplete = (evt) => {
-    console.log(evt.target.value)
+  toggleComplete = (taskId) => {
+    console.log('taskId', taskId)
+    this.setState({
+      todoList: this.state.todoList.map( todo => {
+        if (todo.id === taskId) {
+          return {
+            ...todo,
+            completed: !todo.completed
+          };
+        }
+        return todo;
+      })
+    })
   }
 
 
@@ -63,10 +75,12 @@ class App extends React.Component {
     return (
       <div>
         <h2>Todo List: </h2>
-        <TodoForm addTodo={this.addTodo} />
+        <TodoForm 
+          addTodo={this.addTodo}
+          clearTodos={this.clearTodos}
+          />
         <TodoList 
           todoList={this.state.todoList} 
-          clearTodos={this.clearTodos}
           toggleComplete={this.toggleComplete}
         />
       </div>

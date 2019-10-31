@@ -1,11 +1,9 @@
 import React from 'react'
 
 const Todo = (props) => {
-
   const handleClick = () => {
-    console.log(props)
+    props.toggleComplete(props.id)
   }
-
 
   return (
     <div onClick={handleClick} >

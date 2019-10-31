@@ -16,23 +16,23 @@ export class TodoForm extends Component {
     console.log(this.state)
   }
 
-  handleSubmit = (evt) => {
+  handleAdd = (evt) => {
+    console.log(evt.target.value)
     evt.preventDefault();
     this.props.addTodo(this.state.input);
     this.setState({
       input: ''
-    })
-
+    }) 
   }
-
  
   render() {
     
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange} value={this.state.input}/>
-          <button>Add Todo</button>
+          <input type="text" onChange={this.handleChange} value={this.state.input} />
+          <button onClick={this.handleAdd} >Add Todo</button>
+          <button onClick={this.props.clearTodos} >Clear Completed</button>
         </form>
         
       </div>

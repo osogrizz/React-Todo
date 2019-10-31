@@ -54,6 +54,10 @@ class App extends React.Component {
     })
   }
 
+  toggleComplete = (evt) => {
+    console.log(evt.target.value)
+  }
+
 
   render() {
     return (
@@ -63,6 +67,7 @@ class App extends React.Component {
         <TodoList 
           todoList={this.state.todoList} 
           clearTodos={this.clearTodos}
+          toggleComplete={this.toggleComplete}
         />
       </div>
     );

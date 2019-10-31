@@ -1,8 +1,14 @@
 import React from 'react'
 
 const Todo = (props) => {
+
+  const handleClick = () => {
+    console.log(props)
+  }
+
+
   return (
-    <div>
+    <div onClick={handleClick} >
       <p>{props.task}</p>
     </div>
   )

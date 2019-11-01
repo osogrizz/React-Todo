@@ -34,7 +34,6 @@ export class TodoForm extends Component {
           <button onClick={this.handleAdd} >Add Todo</button>
           <button onClick={this.props.clearTodos} >Clear Completed</button>
         </form>
-        
       </div>
     )
   }

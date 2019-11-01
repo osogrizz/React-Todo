@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList'
 
@@ -73,19 +74,32 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Todo List: </h2>
-        <TodoForm 
-          addTodo={this.addTodo}
-          clearTodos={this.clearTodos}
+      <Wrapper>
+        <Container>
+          <h2>Todo List: </h2>
+          <TodoForm 
+            addTodo={this.addTodo}
+            clearTodos={this.clearTodos}
+            />
+          <TodoList 
+            todoList={this.state.todoList} 
+            toggleComplete={this.toggleComplete}
           />
-        <TodoList 
-          todoList={this.state.todoList} 
-          toggleComplete={this.toggleComplete}
-        />
-      </div>
+        </Container>
+      </Wrapper>
     );
   }
 }
 
 export default App;
+
+
+const Wrapper = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+`
+
+const Container = styled.div`
+  
+`

@@ -15,7 +15,6 @@ const TodoList = (props) => {
           : null
         )
       })}
-      {/* <button onClick={props.clearTodos} >Clear Completed</button> */}
     </div>
   )
 }

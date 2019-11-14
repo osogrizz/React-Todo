@@ -24,7 +24,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      todoList: data,
+      todoList: [],
     }
   }
 
@@ -46,8 +46,8 @@ class App extends React.Component {
     }
   }
 
-  clearTodos = (e) => {
-    e.preventDefault()
+  clearTodos = (event) => {
+    event.preventDefault()
     console.log('cleared')
     this.setState({
       todoList: this.state.todoList.filter( todo => {
@@ -71,11 +71,16 @@ class App extends React.Component {
     })
   }
 
+  componentWillMount() {
+      localStorage.setItem('myTodos', JSON.stringify(this.todoList))
+      console.log(localStorage)
+  }
+
 
   render() {
     return (
       <Wrapper>
-        <Container>
+        <div>
           <h2>Todo List: </h2>
           <TodoForm 
             addTodo={this.addTodo}
@@ -85,7 +90,7 @@ class App extends React.Component {
             todoList={this.state.todoList} 
             toggleComplete={this.toggleComplete}
           />
-        </Container>
+        </div>
       </Wrapper>
     );
   }
@@ -98,8 +103,4 @@ const Wrapper = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
-`
-
-const Container = styled.div`
-  
 `

@@ -9,16 +9,16 @@ export class TodoForm extends Component {
     }
   }
 
-  handleChange = (evt) => {
+  handleChange = (event) => {
     this.setState({
-      input: evt.target.value
+      input: event.target.value
     })
     console.log(this.state)
   }
 
-  handleAdd = (evt) => {
-    console.log(evt.target.value)
-    evt.preventDefault();
+  handleAdd = (event) => {
+    console.log(event.target.value)
+    event.preventDefault();
     this.props.addTodo(this.state.input);
     this.setState({
       input: ''
